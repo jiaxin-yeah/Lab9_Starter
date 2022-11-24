@@ -85,6 +85,8 @@
       <button>Console Trace</button>
       <button>Trigger a Global Error</button>
     </section>
+
+    <!-- <button id="step3">Step 3 Button</button> -->
   </main>
 
   <script>
@@ -195,6 +197,17 @@
     triggerButton.addEventListener('click', handleBtnClick);
     function handleBtnClick() {
       boom;
+    }
+
+    try {
+      let step3Btn = document.getElementById('step3');
+      step3Btn.addEventListener('click', () => {
+        console.log('Step 3');
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      console.log('done');
     }
   </script>
 </body>
