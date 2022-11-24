@@ -86,7 +86,6 @@
       <button>Trigger a Global Error</button>
     </section>
 
-    <!-- <button id="step3">Step 3 Button</button> -->
   </main>
 
   <script>
@@ -199,15 +198,43 @@
       boom;
     }
 
+    // step 3
     try {
-      let step3Btn = document.getElementById('step3');
-      step3Btn.addEventListener('click', () => {
-        console.log('Step 3');
-      });
+      test;
     } catch (err) {
-      console.error(err);
+      if (err instanceof ReferenceError) {
+        console.error('ReferenceError: ' + err.message);
+      }
+      else {
+        throw err;
+      }
     } finally {
       console.log('done');
+    }
+
+    // step 4
+    class Step4Error extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "Step4Error";
+      }
+    }
+
+    function checkLength(arr) {
+      if (arr.length < 7) {
+        throw new Step4Error("Length is smaller than 7");
+      }
+      return arr;
+    }
+
+    try {
+      let result = checkLength([1, 2, 3]);
+    } catch (err) {
+      if (err instanceof Step4Error) {
+        console.error("Invalid data: " + err.message);
+      } else {
+        throw err;
+      }
     }
   </script>
 </body>
