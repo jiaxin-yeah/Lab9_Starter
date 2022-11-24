@@ -181,27 +181,21 @@
     });
 
     let traceButton = errorBtns[13];
+    function foo() {
+      function bar() {
+        console.trace();
+      }
+      bar();
+    }
     traceButton.addEventListener('click', () => {
-      console.trace(); // ???
+      foo();
     });
 
     let triggerButton = errorBtns[14];
-    triggerButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      let output = document.querySelector('output').value;
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
-
-      window.addEventListener('error', function() {
-        console.log('error');
-      });
-      new Promise(function () {
-        throw new Error("fail");
-      }).catch(function (error) {
-        setTimeout(() => {throw new Error("Last exception in last chain link")}, 0);
-      });
-    });
+    triggerButton.addEventListener('click', handleBtnClick);
+    function handleBtnClick() {
+      boom;
+    }
   </script>
 </body>
 
