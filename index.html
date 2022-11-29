@@ -117,6 +117,43 @@
     let errorButton = errorBtns[1];
     errorButton.addEventListener('click', () => {
       console.error("Console Error Demo");
+          // step 3
+    try {
+      test;
+    } catch (err) {
+      if (err instanceof ReferenceError) {
+        console.error('ReferenceError: ' + err.message);
+      }
+      else {
+        throw err;
+      }
+    } finally {
+      console.log('done');
+    }
+        // step 4
+        class Step4Error extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "Step4Error";
+      }
+    }
+
+    function checkLength(arr) {
+      if (arr.length < 7) {
+        throw new Step4Error("Length is smaller than 7");
+      }
+      return arr;
+    }
+
+    try {
+      let result = checkLength([1, 2, 3]);
+    } catch (err) {
+      if (err instanceof Step4Error) {
+        console.error("Invalid data: " + err.message);
+      } else {
+        throw err;
+      }
+    }
     });
 
     let countButton = errorBtns[2];
@@ -204,44 +241,6 @@
       boom;
     }
 
-    // step 3
-    try {
-      test;
-    } catch (err) {
-      if (err instanceof ReferenceError) {
-        console.error('ReferenceError: ' + err.message);
-      }
-      else {
-        throw err;
-      }
-    } finally {
-      console.log('done');
-    }
-
-    // step 4
-    class Step4Error extends Error {
-      constructor(message) {
-        super(message);
-        this.name = "Step4Error";
-      }
-    }
-
-    function checkLength(arr) {
-      if (arr.length < 7) {
-        throw new Step4Error("Length is smaller than 7");
-      }
-      return arr;
-    }
-
-    try {
-      let result = checkLength([1, 2, 3]);
-    } catch (err) {
-      if (err instanceof Step4Error) {
-        console.error("Invalid data: " + err.message);
-      } else {
-        throw err;
-      }
-    }
   </script>
 </body>
 
