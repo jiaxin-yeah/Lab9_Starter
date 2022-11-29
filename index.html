@@ -5,6 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({
+      token: "95be8dd4ea48459e96b1de92d5026d26"
+    });
+  </script>
   <title>Lab 9</title>
 
   <style>
@@ -88,12 +94,7 @@
 
   </main>
                           
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js">
-    window.TrackJS && TrackJS.install({ 
-      token: "50981ac8f4644ee79c08981b8d5c015a"
-      // for more configuration options, see https://docs.trackjs.com
-    });
-
+  <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
